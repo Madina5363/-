@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shahzod & Madina To'y Taklifnomasi</title>
+
+  <!-- Шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: 
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      background: rgba(255 255 255 / 0.85);
+      padding: 50px 20px;
+      min-height: 100vh;
+      text-align: center;
+      box-shadow: inset 0 0 150px rgba(255 192 203, 0.4);
+      position: relative;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    /* Анимация появления */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .decor-line {
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, #f6abb6, #f9d423);
+      margin: 20px auto;
+      border-radius: 5px;
+      box-shadow: 0 0 8px #f9d423;
+      opacity: 0;
+      transform: scaleX(0);
+      animation: expandLine 0.8s forwards;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes expandLine {
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    .strass {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at center, #fff 40%, #f9d423 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 8px #f9d423;
+      animation: sparkle 3s infinite alternate;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+    .strass:nth-child(1) { top: 20px; left: 30px; animation-delay: 1s; }
+    .strass:nth-child(2) { top: 80px; right: 50px; animation-delay: 2.5s; }
+    .strass:nth-child(3) { bottom: 40px; left: 50%; transform: translateX(-50%); animation-delay: 4s; }
+
+    @keyframes sparkle {
+      0% { box-shadow: 0 0 8px #f9d423, 0 0 15px #fff; opacity: 1; }
+      100% { box-shadow: 0 0 2px #f9d423, 0 0 5px #fff; opacity: 0.7; }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #d81e5b;
+      margin-bottom: 0;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+    p.subtitle {
+      font-size: 1.3rem;
+      margin-top: 0;
+      font-weight: 600;
+      color: #d81e5b;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 1.6s;
+    }
+    .date-box {
+  font-size: 1.2rem;
+  margin: 1em 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  color: #b95a82;
+  font-family: 'Playfair Display', serif;
+}
+
+#countdown-container {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  color: #b95a82;
+  font-size: 1.3rem;
+}
+
+.date-btn, .countdown-btn {
+  background: rgba(185, 90, 130, 0.3);
+  color: #b95a82;
+  border: 2px solid #b95a82;
+  padding: 10px 22px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(185, 90, 130, 0.3);
+  letter-spacing: 0.05em;
+  font-family: 'Playfair Display', serif;
+}
+
+.date-btn:hover, .countdown-btn:hover {
+  background: #b95a82;
+  color: #fff;
+  box-shadow: 0 0 25px #f9c5d5cc;
+  transform: scale(1.05);
+}
+
+    .location {
+      font-style: italic;
+      margin-bottom: 2em;
+      font-size: 1.1rem;
+      color: #6d214f;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 2s;
+    }
+    .note {
+      background: #fce4ec;
+      padding: 15px 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #6d214f;
+      box-shadow: 0 0 12px #f9d423aa;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 2.2s;
+    }
+
+    form {
+      background: #fff0f6;
+      padding: 25px 30px;
+      max-width: 450px;
+      margin: 0 auto 50px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px #f9d423aa;
+      text-align: left;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 2.5s;
+    }
+    form h3 {
+      margin-top: 0;
+      color: #d81e5b;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #d81e5b;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    button {
+  background: rgba(255, 182, 193, 0.3); /* светло-розовый прозрачный фон */
+  color: #b95a82; /* красивый нежный розовый */
+  border: 2px solid #b95a82;
+  padding: 14px 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(185, 90, 130, 0.3);
+  letter-spacing: 0.05em;
+}
+
+button:hover {
+  background: #b95a82;
+  color: #fff;
+  box-shadow: 0 0 25px #f9c5d5cc;
+  transform: scale(1.05);
+}
+
+
+    .guest-list {
+      max-width: 450px;
+      margin: 0 auto 50px;
+      background: #fff0f6;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 8px 20px #f9d423aa;
+      color: #6d214f;
+      font-weight: 600;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 2.8s;
+    }
+    .guest-list h3 {
+      margin-top: 0;
+      text-align: center;
+      color: #d81e5b;
+    }
+    .guest-list ul {
+      list-style: none;
+      padding: 0;
+    }
+    .guest-list li {
+      background: #f9d42322;
+      margin: 6px 0;
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 5px #f9d42355;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Таймер */
+    #countdown {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #d81e5b;
+      margin: 15px auto 40px;
+      width: fit-content;
+      background: #f9d423;
+      color: #6d214f;
+      padding: 12px 30px;
+      border-radius: 30px;
+      box-shadow: 0 0 15px #f9d423;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 1.9s;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      .date-box {
+        font-size: 1rem;
+        padding: 8px 20px;
+      }
+      form {
+        padding: 20px;
+      }
+      #countdown {
+        font-size: 1.3rem;
+        padding: 8px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="strass"></div>
+    <div class="strass"></div>
+    <div class="strass"></div>
+
+    <h1>Shahzod & Madina</h1>
+    <p class="subtitle">To'yimizga taklif qilamiz</p>
+
+    <div id="countdown">Yuklanmoqda...</div>
+
+    <div class="date-box">
+  2025-yil 15-iyun, Soat 17:00
+  <button class="date-btn">Qo'shish taqvimga</button>
+</div>
+
+<div id="countdown-container">
+  <div id="countdown">Yuklanmoqda...</div>
+  <button class="countdown-btn">Xabar yuborish</button>
+</div>
+    <div class="note">
+      Sizni hayotingizdagi eng go'zal lahzalarga guvoh bo'lishga chorlaymiz.
+    </div>
+
+    <form id="rsvpForm">
+      <h3>Ishtirokingizni tasdiqlang</h3>
+      <input type="text" id="name" placeholder="Ismingiz" required />
+      <input type="email" id="email" placeholder="Emailingiz" required />
+      <textarea id="message" rows="3" placeholder="Qisqacha izoh"></textarea>
+      <button type="submit">Tasdiqlash</button>
+    </form>
+
+    <div class="guest-list" id="guestList">
+      <h3>Mehmonlar ro'yxati</h3>
+      <ul></ul>
+    </div>
+
+    <div class="decor-line"></div>
+  </div>
+
+  <script>
+    // Таймер обратного отсчёта
+    const countdownEl = document.getElementById('countdown');
+    const weddingDate = new Date('2025-06-15T17:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = 'To‘y boshlangan!';
+        clearInterval(timerInterval);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent = `${days} kun ${hours} soat ${minutes} daqiqa ${seconds} soniya qoldi`;
+    }
+
+    updateCountdown();
+    const timerInterval = setInterval(updateCountdown, 1000);
+
+    // Простая реализация добавления гостей из формы
+    const form = document.getElementById('rsvpForm');
+    const guestListUl = document.querySelector('#guestList ul');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = form.name.value.trim();
+      if (name === '') return;
+
+      const li = document.createElement('li');
+      li.textContent = name;
+
+      guestListUl.appendChild(li);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
